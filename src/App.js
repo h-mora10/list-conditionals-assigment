@@ -10,7 +10,7 @@ class App extends Component {
     textChars: []
   }
 
-  updateTextLenght = (event) => {
+  updateTextHandler = (event) => {
     const text = event.target.value;
     const textChars = [...text.split('')]
 
@@ -21,7 +21,7 @@ class App extends Component {
     });
   }
 
-  deleteCharFromText = (charIndex) => {
+  deleteCharHandler = (charIndex) => {
     const text = this.state.text;
     const textChars = [...text.split('')];
     textChars.splice(charIndex, 1);
@@ -40,7 +40,7 @@ class App extends Component {
       <div>
         {this.state.textChars.map((character, index) => {
           return <CharComponent 
-            click={() => this.deleteCharFromText(index)}
+            click={() => this.deleteCharHandler(index)}
             letter={character}
             key={index}/>
         })}
@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>List Conditionals Assignment</h1>
-        <input type="text" onChange={(event) => this.updateTextLenght(event)} value={this.state.text} />
+        <input type="text" onChange={(event) => this.updateTextHandler(event)} value={this.state.text} />
         <p>The length of the text is: {this.state.length} </p>
         <ValidationComponent 
           textLenght={this.state.length}
